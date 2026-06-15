@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Border</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px; /* space between items */
+            margin: 50px auto;
+            max-width: 1000px;
+        }
+
+        .item {
+            border: solid 5px rgb(231, 24, 124);
+            border-radius: 20px;
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        section {
+            margin-top: 15px;
+            padding: 10px;
+            border-left: solid;
+            border-right: double;
+            border-top: dotted;
+            border-bottom: dashed;
+        }
+    </style>
+</head>
+<body>
+    <h1>MENU</h1>
+    <div class="menu">
+        <div class="item">
+            <img src="images/nonveg.png" alt="Non-Veg Meal">
+            <section>
+                <h2>Name: Meal</h2>
+                <h3>Price: 499</h3>
+            </section>
+        </div>
+
+        <div class="item">
+            <img src="images/starters.png" alt="Starters">
+            <section>
+                <h2>Name: Starters</h2>
+                <h3>Price: 499</h3>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Government Job Application</title>
+</head>
+<body>
+  <h1>Government Job Application</h1>
+  <form action="list.html" method="post" type="multipart">
+
+    <label for="fullname">Full Name:</label><br>
+    <input type="text" id="fullname" name="fullname" required><br><br>
+
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" id="dob" name="dob" required><br><br>
+
+    <label for="gender">Gender:</label><br>
+    <select id="gender" name="gender" required>
+      <option value="">--Select--</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select><br><br>
+
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phone">Phone Number:</label><br>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br><br>
+
+    <label for="address">Permanent Address:</label><br>
+    <textarea id="address" name="address" rows="3" required></textarea><br><br>
+
+    <label for="education">Highest Qualification:</label><br>
+    <input type="text" id="education" name="education" required><br><br>
+
+    <label for="experience">Work Experience:</label><br>
+    <textarea id="experience" name="experience" rows="4"></textarea><br><br>
+
+    <label for="resume">Upload Resume (PDF/DOC):</label><br>
+    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required><br><br>
+
+    <input type="submit" value="Submit Application">
+    <input type="reset" value="Reset">
+  </form>
+</body>
+</html>

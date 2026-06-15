@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🍽️ Anju Royal Feast - Restaurant Menu Card</title>
+  <meta name="description" content="Anju Royal Feast - Authentic Indian Cuisine, Enikepadu, Vijayawada"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a0a00 0%, #2d1000 40%, #1a0500 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 20px;
+    }
+
+    /* ===== HEADER ===== */
+    .menu-header {
+      text-align: center;
+      padding: 50px 20px 30px;
+      background: linear-gradient(180deg, rgba(255,180,0,0.1) 0%, transparent 100%);
+      border-bottom: 2px solid rgba(255,180,0,0.35);
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .menu-header::before {
+      content: '✦ ✦ ✦';
+      display: block;
+      color: #c9a227;
+      font-size: 18px;
+      letter-spacing: 10px;
+      margin-bottom: 14px;
+    }
+
+    .menu-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #f5d06a 0%, #c9a227 50%, #e8b84b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+
+    .header-tagline {
+      color: #c9a22799;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .header-contact {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,162,39,0.1);
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 0.88rem;
+      color: #e8c96a;
+      font-weight: 500;
+    }
+
+    .contact-item span.icon { font-size: 1rem; }
+
+    .header-divider {
+      margin-top: 28px;
+      color: #c9a22766;
+      font-size: 0.8rem;
+      letter-spacing: 5px;
+    }
+
+    /* ===== SECTION WRAPPER ===== */
+    .section-wrapper {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-header .icon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ==== COLOR THEMES ==== */
+    .starters .icon-badge    { background: linear-gradient(135deg,#ff9f00,#e65100); }
+    .starters .section-title { color: #ffb74d; }
+    .starters .section-sub   { color: #ff9f0088; }
+
+    .nonveg .icon-badge    { background: linear-gradient(135deg,#e53935,#8b0000); }
+    .nonveg .section-title { color: #ef9a9a; }
+    .nonveg .section-sub   { color: #e5393588; }
+
+    .veg .icon-badge    { background: linear-gradient(135deg,#43a047,#1b5e20); }
+    .veg .section-title { color: #a5d6a7; }
+    .veg .section-sub   { color: #43a04788; }
+
+    .desserts .icon-badge    { background: linear-gradient(135deg,#ec407a,#880e4f); }
+    .desserts .section-title { color: #f48fb1; }
+    .desserts .section-sub   { color: #ec407a88; }
+
+    .drinks .icon-badge    { background: linear-gradient(135deg,#29b6f6,#01579b); }
+    .drinks .section-title { color: #81d4fa; }
+    .drinks .section-sub   { color: #29b6f688; }
+
+    /* ===== SECTION IMAGE BANNER ===== */
+    .section-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      border: 2px solid rgba(255,255,255,0.07);
+      display: block;
+    }
+
+    /* ===== TABLE ===== */
+    .menu-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .menu-table thead tr {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .menu-table th {
+      padding: 16px 20px;
+      text-align: center;
+    }
+
+    .menu-table td {
+      padding: 14px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.92rem;
+      vertical-align: middle;
+    }
+
+    .menu-table tbody tr:last-child td { border-bottom: none; }
+    .menu-table tbody tr { transition: background 0.25s ease; }
+    .menu-table tbody tr:hover { background: rgba(255,255,255,0.06); }
+
+    .item-name {
+      text-align: left !important;
+      font-weight: 500;
+      color: #f0e6cc;
+    }
+
+    .item-desc {
+      font-size: 0.75rem;
+      color: #9e8060;
+      margin-top: 3px;
+    }
+
+    .price { font-weight: 600; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 6px;
+      vertical-align: middle;
+      border: 1px solid;
+    }
+
+    .badge-spicy  { color:#ff6b6b; border-color:#ff6b6b44; background:#ff6b6b11; }
+    .badge-mild   { color:#69db7c; border-color:#69db7c44; background:#69db7c11; }
+    .badge-chef   { color:#f5c842; border-color:#f5c84244; background:#f5c84211; }
+    .badge-new    { color:#74c0fc; border-color:#74c0fc44; background:#74c0fc11; }
+
+    /* HEAD ROW COLORS */
+    .starters thead tr { background: linear-gradient(90deg,#e65100cc,#ff6f0066); color:#ffe0b2; }
+    .nonveg   thead tr { background: linear-gradient(90deg,#b71c1ccc,#e5393566); color:#ffcdd2; }
+    .veg      thead tr { background: linear-gradient(90deg,#1b5e20cc,#43a04766); color:#c8e6c9; }
+    .desserts thead tr { background: linear-gradient(90deg,#880e4fcc,#ec407a66); color:#fce4ec; }
+    .drinks   thead tr { background: linear-gradient(90deg,#01579bcc,#29b6f666); color:#e1f5fe; }
+
+    .starters .price { color: #ffb74d; }
+    .nonveg   .price { color: #ef9a9a; }
+    .veg      .price { color: #a5d6a7; }
+    .desserts .price { color: #f48fb1; }
+    .drinks   .price { color: #81d4fa; }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      text-align: center;
+      margin: 50px auto;
+      color: #c9a22755;
+      letter-spacing: 8px;
+      font-size: 14px;
+    }
+
+    /* ===== FOOTER ===== */
+    .menu-footer {
+      text-align: center;
+      padding: 44px 20px;
+      border-top: 1px solid rgba(200,162,50,0.25);
+      margin-top: 60px;
+      color: #7a6030;
+      font-size: 0.88rem;
+      line-height: 2.2;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      background: linear-gradient(135deg, #f5d06a, #c9a227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 30px;
+      margin-top: 12px;
+      margin-bottom: 14px;
+    }
+
+    .footer-info span {
+      color: #b89040;
+      font-size: 0.85rem;
+    }
+
+    .footer-note {
+      font-size: 0.75rem;
+      color: #5a4520;
+      border-top: 1px solid rgba(200,162,50,0.12);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .menu-table th, .menu-table td { padding: 10px 12px; font-size: 0.82rem; }
+      .section-image { height: 150px; }
+      .header-contact { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================= HEADER ============================= -->
+  <header class="menu-header">
+    <h1>Anju Royal Feast</h1>
+    <p class="header-tagline">Authentic Indian Cuisine &amp; Fine Dining</p>
+
+    <div class="header-contact">
+      <div class="contact-item" id="restaurant-address">
+        <span class="icon">📍</span>
+        <span>Enikepadu, Vijayawada, Andhra Pradesh</span>
+      </div>
+      <div class="contact-item" id="restaurant-phone">
+        <span class="icon">📞</span>
+        <span>+91 73869 34758</span>
+      </div>
+      <div class="contact-item" id="restaurant-hours">
+        <span class="icon">🕐</span>
+        <span>Open Daily: 11:00 AM – 11:00 PM</span>
+      </div>
+    </div>
+
+    <div class="header-divider">— Our Menu —</div>
+  </header>
+
+  <!-- ========================= STARTERS ========================= -->
+  <div class="section-wrapper starters">
+    <div class="section-header">
+      <div class="icon-badge">🍢</div>
+      <div>
+        <div class="section-title">Starters</div>
+        <div class="section-sub">Appetizers &amp; Snacks</div>
+      </div>
+    </div>
+
+    <img src="images/starters.png" alt="Starters" class="section-image"/>
+
+    <table class="menu-table" id="starters-table">
+      <thead>
+        <tr>
+          <th style="text-align:left; width:42%">Item</th>
+          <th>Single (₹)</th>
+          <th>Double (₹)</th>
+          <th>Serves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Veg Spring Rolls <span class="badge badge-mild">Mild</span>
+            <div class="item-desc">Crispy golden rolls stuffed with mixed vegetables</div></td>
+          <td class="price">80</td><td class="price">150</td><td>2 pcs / 4 pcs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Samosa <span class="badge badge-spicy">Spicy</span>
+            <div class="item-desc">Classic fried pastry with spiced potato filling</div></td>
+          <td class="price">40</td><td class="price">75</td><td>2 pcs / 4 pcs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Paneer Tikka <span class="badge badge-chef">Chef's Fav</span>
+            <div class="item-desc">Marinated cottage cheese grilled in tandoor</div></td>
+          <td class="price">180</td><td class="price">340</td><td>4 pcs / 8 pcs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Veg Pakora
+            <div class="item-desc">Assorted vegetables fried in spiced chickpea batter</div></td>
+          <td class="price">90</td><td class="price">170</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Chicken Starter Platter <span class="badge badge-spicy">Spicy</span> <span class="badge badge-new">New</span>
+            <div class="item-desc">Mix of crispy fried chicken bites with dips</div></td>
+          <td class="price">220</td><td class="price">420</td><td>1 Person / 2 Person</td>
+        </tr>
+        <tr>
+          <td class="item-name">Fish Fingers <span class="badge badge-mild">Mild</span>
+            <div class="item-desc">Crumb-coated fish strips, golden fried</div></td>
+          <td class="price">200</td><td class="price">380</td><td>4 pcs / 8 pcs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ========================= NON-VEG ========================= -->
+  <div class="section-wrapper nonveg">
+    <div class="section-header">
+      <div class="icon-badge">🍗</div>
+      <div>
+        <div class="section-title">Non-Vegetarian</div>
+        <div class="section-sub">Chicken · Mutton · Fish · Seafood</div>
+      </div>
+    </div>
+
+    <img src="images/nonveg.png" alt="Non-Veg Dishes" class="section-image"/>
+
+    <table class="menu-table" id="nonveg-table">
+      <thead>
+        <tr>
+          <th style="text-align:left; width:42%">Item</th>
+          <th>Single (₹)</th>
+          <th>Double (₹)</th>
+          <th>Serves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Butter Chicken <span class="badge badge-mild">Mild</span> <span class="badge badge-chef">Best Seller</span>
+            <div class="item-desc">Tender chicken in rich tomato-butter gravy</div></td>
+          <td class="price">280</td><td class="price">540</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Chicken Biryani <span class="badge badge-spicy">Spicy</span>
+            <div class="item-desc">Fragrant basmati rice slow-cooked with chicken &amp; spices</div></td>
+          <td class="price">250</td><td class="price">480</td><td>Single / Double</td>
+        </tr>
+        <tr>
+          <td class="item-name">Mutton Curry <span class="badge badge-spicy">Spicy</span>
+            <div class="item-desc">Slow-cooked mutton in authentic masala gravy</div></td>
+          <td class="price">320</td><td class="price">620</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Fish Curry
+            <div class="item-desc">Coastal-style fish cooked in tangy coconut gravy</div></td>
+          <td class="price">290</td><td class="price">560</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Chicken Tikka Masala <span class="badge badge-chef">Chef's Fav</span>
+            <div class="item-desc">Grilled chicken chunks in creamy spiced sauce</div></td>
+          <td class="price">300</td><td class="price">580</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Egg Curry
+            <div class="item-desc">Boiled eggs in a rich onion-tomato masala</div></td>
+          <td class="price">160</td><td class="price">300</td><td>2 Eggs / 4 Eggs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Prawn Masala <span class="badge badge-new">New</span>
+            <div class="item-desc">Juicy prawns tossed in spicy coastal masala</div></td>
+          <td class="price">350</td><td class="price">680</td><td>Half / Full</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ========================= VEG ========================= -->
+  <div class="section-wrapper veg">
+    <div class="section-header">
+      <div class="icon-badge">🌿</div>
+      <div>
+        <div class="section-title">Vegetarian</div>
+        <div class="section-sub">Paneer · Dal · Curries · Biryani</div>
+      </div>
+    </div>
+
+    <img src="images/veg.png" alt="Veg Dishes" class="section-image"/>
+
+    <table class="menu-table" id="veg-table">
+      <thead>
+        <tr>
+          <th style="text-align:left; width:42%">Item</th>
+          <th>Single (₹)</th>
+          <th>Double (₹)</th>
+          <th>Serves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Paneer Butter Masala <span class="badge badge-mild">Mild</span> <span class="badge badge-chef">Best Seller</span>
+            <div class="item-desc">Cottage cheese cubes in a velvety tomato gravy</div></td>
+          <td class="price">220</td><td class="price">420</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Dal Makhani
+            <div class="item-desc">Black lentils slow-cooked with cream &amp; spices overnight</div></td>
+          <td class="price">180</td><td class="price">340</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Veg Biryani <span class="badge badge-spicy">Spicy</span>
+            <div class="item-desc">Basmati rice with mixed vegetables &amp; aromatic spices</div></td>
+          <td class="price">200</td><td class="price">380</td><td>Single / Double</td>
+        </tr>
+        <tr>
+          <td class="item-name">Palak Paneer <span class="badge badge-mild">Mild</span>
+            <div class="item-desc">Fresh spinach purée with paneer cubes</div></td>
+          <td class="price">210</td><td class="price">400</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Chole Bhature <span class="badge badge-spicy">Spicy</span> <span class="badge badge-new">New</span>
+            <div class="item-desc">Spiced chickpeas served with fluffy deep-fried bread</div></td>
+          <td class="price">130</td><td class="price">250</td><td>1 Bhatura / 2 Bhatura</td>
+        </tr>
+        <tr>
+          <td class="item-name">Mixed Veg Curry
+            <div class="item-desc">Seasonal vegetables in a mildly spiced masala gravy</div></td>
+          <td class="price">160</td><td class="price">300</td><td>Half / Full</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ========================= DESSERTS ========================= -->
+  <div class="section-wrapper desserts">
+    <div class="section-header">
+      <div class="icon-badge">🍮</div>
+      <div>
+        <div class="section-title">Desserts</div>
+        <div class="section-sub">Sweets &amp; Mithai</div>
+      </div>
+    </div>
+
+    <img src="images/desserts.png" alt="Desserts" class="section-image"/>
+
+    <table class="menu-table" id="desserts-table">
+      <thead>
+        <tr>
+          <th style="text-align:left; width:42%">Item</th>
+          <th>Single (₹)</th>
+          <th>Double (₹)</th>
+          <th>Serves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Gulab Jamun <span class="badge badge-chef">Classic</span>
+            <div class="item-desc">Soft milk solids dumplings soaked in rose sugar syrup</div></td>
+          <td class="price">60</td><td class="price">110</td><td>2 pcs / 4 pcs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Rasgulla
+            <div class="item-desc">Spongy cottage cheese balls in light sugar syrup</div></td>
+          <td class="price">60</td><td class="price">110</td><td>2 pcs / 4 pcs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Kheer <span class="badge badge-chef">Chef's Fav</span>
+            <div class="item-desc">Creamy rice pudding with cardamom, saffron &amp; nuts</div></td>
+          <td class="price">90</td><td class="price">170</td><td>Small / Large Bowl</td>
+        </tr>
+        <tr>
+          <td class="item-name">Gajar Halwa <span class="badge badge-new">Seasonal</span>
+            <div class="item-desc">Slow-cooked carrot dessert with ghee, milk &amp; cashews</div></td>
+          <td class="price">100</td><td class="price">190</td><td>Half / Full</td>
+        </tr>
+        <tr>
+          <td class="item-name">Jalebi with Rabri
+            <div class="item-desc">Crispy orange spirals served with rich condensed milk</div></td>
+          <td class="price">80</td><td class="price">150</td><td>3 pcs / 6 pcs</td>
+        </tr>
+        <tr>
+          <td class="item-name">Ice Cream
+            <div class="item-desc">Vanilla · Chocolate · Strawberry · Mango</div></td>
+          <td class="price">80</td><td class="price">150</td><td>1 Scoop / 2 Scoops</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ========================= COOL DRINKS ========================= -->
+  <div class="section-wrapper drinks">
+    <div class="section-header">
+      <div class="icon-badge">🥤</div>
+      <div>
+        <div class="section-title">Cool Drinks</div>
+        <div class="section-sub">Beverages · Juices · Shakes · Lassi</div>
+      </div>
+    </div>
+
+    <img src="images/drinks.png" alt="Cool Drinks" class="section-image"/>
+
+    <table class="menu-table" id="drinks-table">
+      <thead>
+        <tr>
+          <th style="text-align:left; width:42%">Item</th>
+          <th>Single (₹)</th>
+          <th>Double (₹)</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Mango Lassi <span class="badge badge-chef">Best Seller</span>
+            <div class="item-desc">Thick yogurt drink blended with fresh Alphonso mango</div></td>
+          <td class="price">80</td><td class="price">150</td><td>300ml / 600ml</td>
+        </tr>
+        <tr>
+          <td class="item-name">Fresh Lime Soda <span class="badge badge-mild">Refreshing</span>
+            <div class="item-desc">Freshly squeezed lime with soda, salt or sweet</div></td>
+          <td class="price">50</td><td class="price">95</td><td>250ml / 500ml</td>
+        </tr>
+        <tr>
+          <td class="item-name">Cold Coffee
+            <div class="item-desc">Chilled blended coffee with milk &amp; ice cream</div></td>
+          <td class="price">90</td><td class="price">170</td><td>300ml / 600ml</td>
+        </tr>
+        <tr>
+          <td class="item-name">Soft Drinks
+            <div class="item-desc">Coca-Cola · Pepsi · Sprite · Fanta · Thumsup</div></td>
+          <td class="price">40</td><td class="price">75</td><td>Can (330ml) / Bottle (600ml)</td>
+        </tr>
+        <tr>
+          <td class="item-name">Fresh Fruit Juice <span class="badge badge-new">Seasonal</span>
+            <div class="item-desc">Orange · Watermelon · Pineapple · Mixed Fruit</div></td>
+          <td class="price">70</td><td class="price">130</td><td>250ml / 500ml</td>
+        </tr>
+        <tr>
+          <td class="item-name">Buttermilk (Chaas)
+            <div class="item-desc">Lightly spiced yogurt drink with cumin &amp; coriander</div></td>
+          <td class="price">40</td><td class="price">75</td><td>250ml / 500ml</td>
+        </tr>
+        <tr>
+          <td class="item-name">Milkshakes
+            <div class="item-desc">Strawberry · Chocolate · Vanilla · Banana</div></td>
+          <td class="price">100</td><td class="price">190</td><td>300ml / 600ml</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="menu-footer">
+    <span class="footer-name">Anju Royal Feast</span>
+    <div class="footer-info">
+      <span>📍 Enikepadu, Vijayawada, Andhra Pradesh</span>
+      <span>📞 +91 73869 34758</span>
+      <span>🕐 Open Daily: 11:00 AM – 11:00 PM</span>
+    </div>
+    <div class="footer-note">
+      All prices are inclusive of taxes &nbsp;·&nbsp; Home delivery available &nbsp;·&nbsp; Customization on request<br/>
+      © 2026 Anju Royal Feast. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+
+    <form action="name.html">
+
+        Name:
+        <input type="text" required placeholder="Enter name">
+        <br><br>
+
+        Email:
+        <input type="email" required placeholder="xxx@gmail.com">
+        <br><br>
+
+        Age:
+        <input type="number" required>
+        <br><br>
+
+        Phone:
+        <input type="tel" 
+        required>
+        <br><br>
+
+        Gender:
+        <input type="radio" name="gender" required> Male
+        <input type="radio" name="gender" required> Female
+        <br><br>
+
+        Password:
+        <input type="password" required>
+        <br><br>
+
+        Date:
+        <input type="date">
+        <br><br>
+
+        Time:
+        <input type="time">
+        <br><br>
+
+        Month:
+        <input type="month">
+        <br><br>
+
+        Week:
+        <input type="week">
+        <br><br>
+
+        State:
+        <select name="state">
+            <option>AP</option>
+            <option>TS</option>
+            <option>TN</option>
+            <option>KA</option>
+            <option>MP</option>
+            <option>UP</option>
+            <option>HP</option>
+            <option>JK</option>
+        </select>
+        <br><br>
+
+        Skills:
+        <select multiple size="3">
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>Java</option>
+            <option>MySQL</option>
+            <option>NLP</option>
+        </select>
+        <br><br>
+
+        College Name:
+        <input list="clg">
+        <datalist id="clg">
+            <option value="Nalanda Degree College">
+            <option value="SRK">
+            <option value="PBS">
+        </datalist>
+        <br><br>
+        resume<input type="file" accept=".pdf,.png,.jpg" > <br><br>
+        remarks<textarea></textarea> <br><br>
+        grade<input type="range" min="5" max="10"><br><br>
+        grade<input type="number" min="5" max="10"><br><br>
+        color <input type="color">
+        <input type="submit" value="Submit">
+
+    </form>
+
+</body>
+</html>

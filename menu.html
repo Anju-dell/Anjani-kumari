@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anju Royal Feast - Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111111;
+            --accent-color: #d4af37; /* Royal Gold */
+            --accent-hover: #b5952f;
+            --text-main: #f8fafc;
+            --text-muted: #a1a1aa;
+            --border-color: #27272a;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at top right, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+        }
+
+        .menu-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.8), transparent);
+            border-radius: 24px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .address {
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .menu-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .category-title::before, .category-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .category-title::before { margin-left: -70px; }
+        .category-title::after { margin-left: 20px; }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--border-color);
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .card-image-wrapper {
+            overflow: hidden;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            z-index: 1;
+            background: var(--card-bg);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .item-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .item-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .prices-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .price-badge {
+            flex: 1;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 0.5rem;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .menu-card:hover .price-badge {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .price-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .price-value {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 1px solid;
+            z-index: 10;
+        }
+
+        .tag-veg {
+            color: #4ade80;
+            border-color: #4ade80;
+        }
+
+        .tag-nonveg {
+            color: #f87171;
+            border-color: #f87171;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            .menu-wrapper {
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-wrapper">
+        <header class="header">
+            <div class="subtitle">Welcome to</div>
+            <h1>Anju Royal Feast</h1>
+            <p class="address">📍 Enikepadu, Vijayawada, Andhra Pradesh</p>
+        </header>
+
+        <!-- Starters -->
+        <section class="menu-category">
+            <h2 class="category-title">Starters</h2>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <article class="menu-card">
+                    <span class="tag tag-nonveg">Non-Veg</span>
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=600&q=80" alt="Chilli Chicken" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Royal Chilli Chicken</h3>
+                        </div>
+                        <p class="item-desc">Crispy marinated chicken tossed in a spicy, tangy, and slightly sweet sauce with bell peppers.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single</span>
+                                <span class="price-value">₹249</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double</span>
+                                <span class="price-value">₹449</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 2 -->
+                <article class="menu-card">
+                    <span class="tag tag-veg">Veg</span>
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1599487405613-608497fa92b5?auto=format&fit=crop&w=600&q=80" alt="Paneer Tikka" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Tandoori Paneer Tikka</h3>
+                        </div>
+                        <p class="item-desc">Cubes of cottage cheese marinated in rich yogurt and royal spices, roasted to perfection.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single</span>
+                                <span class="price-value">₹229</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double</span>
+                                <span class="price-value">₹399</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Biryani -->
+        <section class="menu-category">
+            <h2 class="category-title">Signature Biryani</h2>
+            <div class="menu-grid">
+                <!-- Item 3 -->
+                <article class="menu-card">
+                    <span class="tag tag-nonveg">Non-Veg</span>
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Chicken Dum Biryani" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Hyderabadi Chicken Dum Biryani</h3>
+                        </div>
+                        <p class="item-desc">Aromatic basmati rice cooked with tender marinated chicken and secret royal spices on slow fire.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single</span>
+                                <span class="price-value">₹299</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double</span>
+                                <span class="price-value">₹549</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 4 -->
+                <article class="menu-card">
+                    <span class="tag tag-veg">Veg</span>
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1633383718081-22ac93e3db65?auto=format&fit=crop&w=600&q=80" alt="Veg Biryani" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Nawabi Veg Biryani</h3>
+                        </div>
+                        <p class="item-desc">Premium basmati rice layered with assorted fresh vegetables, saffron, and rich spices.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single</span>
+                                <span class="price-value">₹249</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double</span>
+                                <span class="price-value">₹449</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Desserts -->
+        <section class="menu-category">
+            <h2 class="category-title">Desserts</h2>
+            <div class="menu-grid">
+                <!-- Item 5 -->
+                <article class="menu-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80" alt="Gulab Jamun" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Shahi Gulab Jamun</h3>
+                        </div>
+                        <p class="item-desc">Deep-fried milk solid balls soaked in a delicate sugar syrup flavored with cardamom and rose water.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single (2pcs)</span>
+                                <span class="price-value">₹99</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double (4pcs)</span>
+                                <span class="price-value">₹179</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Item 6 -->
+                <article class="menu-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c8e9e1cb?auto=format&fit=crop&w=600&q=80" alt="Ice Cream" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Royal Falooda</h3>
+                        </div>
+                        <p class="item-desc">Rich dessert beverage with rose syrup, vermicelli, sweet basil seeds, and a scoop of vanilla ice cream.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single</span>
+                                <span class="price-value">₹149</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double</span>
+                                <span class="price-value">₹269</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Cool Drinks -->
+        <section class="menu-category">
+            <h2 class="category-title">Cool Drinks</h2>
+            <div class="menu-grid">
+                <!-- Item 7 -->
+                <article class="menu-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="Mojito" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Virgin Mint Mojito</h3>
+                        </div>
+                        <p class="item-desc">Refreshing mocktail made with fresh mint leaves, lime juice, and sparkling water.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single</span>
+                                <span class="price-value">₹119</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double</span>
+                                <span class="price-value">₹199</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Item 8 -->
+                <article class="menu-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Cola" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Chilled Beverages</h3>
+                        </div>
+                        <p class="item-desc">Selection of popular carbonated drinks served ice cold to quench your thirst.</p>
+                        <div class="prices-container">
+                            <div class="price-badge">
+                                <span class="price-label">Single (330ml)</span>
+                                <span class="price-value">₹59</span>
+                            </div>
+                            <div class="price-badge">
+                                <span class="price-label">Double (600ml)</span>
+                                <span class="price-value">₹99</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
